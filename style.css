@@ -1,0 +1,314 @@
+:root {
+	--sidebar-width: min(19%, 11cm);
+	--sidebar-padding: 7%;
+	--sidebar-color: #1992d4;
+	--header: max(25%, 3.5cm);
+	--inside-box-text-color: #636363;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	width: min(100vw, 60cm);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+svg {
+	width: 100%;
+	height: 100%;
+}
+
+
+.size-full {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.parent-grid {
+	display: grid;
+	grid-template-columns: var(--sidebar-width) calc(100% - var(--sidebar-width));
+	grid-row: 100%;
+	overflow: hidden;
+}
+
+.sidebar-parent {
+	background-color: var(--sidebar-color); 
+	overflow-y: scroll;
+}
+
+.sidebar {
+	padding: var(--sidebar-padding);
+	display: grid;
+	gap: 0.2cm;
+	margin: 0;
+}
+
+.logo {
+}
+
+.options-parent {
+}
+.options {
+	display: grid;
+	grid-template-rows: repeat(10, 1cm);
+}
+
+.right-parent {
+	display: grid;
+	grid-template-rows: var(--header) auto;
+	grid-template-columns: 100%;
+	overflow-y: scroll;
+}
+
+.header-parent {
+	box-shadow: 0 0.1cm 0.1cm rgb(163, 163, 117, 0.5);
+	padding: 0.2cm 1cm;
+	z-index: 500;
+}
+
+.header {
+	display: grid;
+	grid-template-rows: 40% 60%;
+	grid-template-columns: 100%;
+	align-content: space-between;
+	height: 100%;
+}
+
+.header-row-1 {
+	display: grid;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	grid-template-columns: minmax(5cm, 10cm) minmax(4cm, 6cm);
+	grid-template-rows: 100%;
+}
+
+.search-parent {
+	display: grid;
+	grid-template-rows: 100%;
+	grid-template-columns: minmax(0.3cm, 1cm) auto;
+	align-items: center;
+	gap: 0.2cm;
+}
+
+.search-button {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.search-button button {
+	width: 1cm;
+	height: 1cm;
+	align-items: center;
+	background: none;
+	border: none;
+	padding-top: 0.2cm;
+}
+
+.search-input {
+}
+
+.search-input input {
+	width: 100%;	
+	border-radius: 0.5cm;
+	padding: 0.1cm;
+	background-color: #e2e8f0;
+	border: none;
+}
+
+.info {
+	display: grid;
+	grid-template-columns: auto auto auto;
+}
+
+.alert {
+}
+
+.user-info-1 {
+	display: grid;
+	grid-template-columns: auto auto;
+}
+
+.user-image {
+}
+
+.user-name {
+}
+
+
+.header-row-2 {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-items: space-between;
+	align-items: center;
+}
+
+.user-info-2 {
+	display: grid;
+	grid-template:
+	"user-image user-quote"
+	"user-image user-name"
+	;
+}
+
+.user-image-2 {
+	grid-area: user-image;
+}
+.user-quote-2 {
+	grid-area: user-quote;
+}
+.user-name-2 {
+	grid-area: user-name
+}
+
+
+.header-options {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	justify-content: end;
+	grid-gap: 0.5cm;
+}
+
+.header-options > div {
+	background-color: var(--sidebar-color);
+	border-radius: 0.2cm;
+	width: 3cm;
+	display: grid;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.main-content-parent {
+	background-color: #e2e8f0;
+	padding: 0.2cm 0.5cm;
+
+}
+
+.main-content {
+	display: grid;
+	width: 100%;
+	min-height: 80%;
+	grid-template-rows: 50% 50%;
+	grid-template-columns: auto clamp(3cm,30%, 6cm);
+	grid-template-areas: 
+	"projects right"
+	"projects right"
+	;
+	grid-gap: 1cm;
+	align-content: stretch;
+	color: var(--inside-box-text-color);
+}
+
+
+.projects-parent {
+
+}
+.projects-row-1 {
+	color: black;
+	font-weight: 900;
+}
+
+.projects {
+	grid-area: projects;
+	display: grid;
+	gap: 1cm;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.project-box {
+	width: 100%;
+	display: grid;
+	grid-template-rows: auto auto auto;
+	background-color: white; 
+	/* if border-left bigger than border-radius, it looks straight, otherwise looks like the left side top-bottom going to right over the corner. I guess I've used something like this before. anyyway... */
+	border-radius: 0.4cm;
+	border-left: 0.5cm solid #f0b429;
+}
+
+.project-box-child {
+	display: grid;
+	margin: 0.5cm 1cm;
+}
+
+.project-box-child > p:nth-child(1) {
+	color: black;
+	font-weight: 900;
+}
+
+.project-options {	
+	width: 2cm;
+	display: grid;
+	grid-template-columns: auto auto auto; 
+	grid-template-rows: 1cm;
+	justify-self: end;
+}
+
+.project-options > div {
+	width: 1cm;
+}
+
+
+
+.right {
+	display: grid;
+	grid-template-areas:
+	"announcements"
+	"trending"
+	;
+	gap: 1cm;
+}
+
+.announcements, .trending {	
+	color: black;
+}
+
+.announcements-row-1 , .trending-row-1 {
+	height: 1cm;
+}
+.announcements-row-2 , .trending-row-2 {
+	height: calc(100% - 1cm);
+}
+.announcements-row-2 > div, .trending-row-2 > div {
+	background-color: #f6f7f8;
+	padding: 0.1cm;
+	font-size: 0.32cm;
+	border-radius: 0.4cm;
+}
+.announcements-row-2 > div > div, .trending-row-2 > div > div {
+	background-color: #f6f7f8;
+	padding: 0.3cm;
+	font-size: 0.32cm;
+}
+
+.announcements-row-2 > div div > p:nth-child(1), .trending-row-2 > div div > p:nth-child(1) {
+	font-weight: bold;
+}
+.announcements-row-2 > div div > p:nth-child(2), .trending-row-2 > div div > p:nth-child(2) {
+	color: var(--inside-box-text-color);
+}
+.announcements-row-2 > div > div > div > *, .trending-row-2 > div > div > div > * {
+	margin: 0.1cm;
+}
+.announcements {
+	grid-area: announcements;
+}
+
+.trending {
+	grid-area: trending;
+}
+
+
+
+
+
+
+
