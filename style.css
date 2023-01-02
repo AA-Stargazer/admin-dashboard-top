@@ -2,8 +2,20 @@
 	--sidebar-width: min(19%, 11cm);
 	--sidebar-padding: 7%;
 	--sidebar-color: #1992d4;
-	--header: max(25%, 3.5cm);
 	--inside-box-text-color: #636363;
+	--image-size-1: 2cm;
+	--image-size-2: 1.1cm;
+	--shadow-color: grey;
+}
+
+@font-face {
+	font-family: ffont;
+	src: url("./fonts/Roboto-Bold.ttf");
+	font-weight: bold;
+}
+@font-face {
+	font-family: ffont;
+	src: url("./fonts/Roboto-Medium.ttf");
 }
 
 html, body {
@@ -14,13 +26,9 @@ html, body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	max-width: 50cm;
+	font-family: ffont;
 }
-
-svg {
-	width: 100%;
-	height: 100%;
-}
-
 
 .size-full {
 	width: 100%;
@@ -28,6 +36,15 @@ svg {
 	padding: 0;
 	margin: 0;
 }
+
+.grid-center-all {
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	justify-items: center;
+	align-items: center;
+}
+
 
 .parent-grid {
 	display: grid;
@@ -38,17 +55,35 @@ svg {
 
 .sidebar-parent {
 	background-color: var(--sidebar-color); 
-	overflow-y: scroll;
+	overflow-y: scroll;	
 }
 
 .sidebar {
 	padding: var(--sidebar-padding);
 	display: grid;
+	grid-template-rows: auto auto;
 	gap: 0.2cm;
 	margin: 0;
+	color: white;
+	font-weight: 900;
 }
 
+.sidebar svg {
+	fill: white;
+}
+
+.logo-parent {
+}
 .logo {
+	display: grid;
+	grid-template-columns: minmax(1.4cm, 1fr) 3fr;
+	justify-content: start;
+	align-content: center;
+	justify-items: start;
+	align-items: center;
+	gap: 0.25cm;
+}
+.logo svg {
 }
 
 .options-parent {
@@ -56,11 +91,21 @@ svg {
 .options {
 	display: grid;
 	grid-template-rows: repeat(10, 1cm);
+	align-items: center;
+	justify-content: start;
+}
+.option {
+	display: grid;
+	grid-template-columns: minmax(0.4cm, 1fr) 5fr;
+	align-items:  center;
+	gap: 0.5cm;
+}
+.option div {
 }
 
 .right-parent {
 	display: grid;
-	grid-template-rows: var(--header) auto;
+	grid-template-rows: minmax(4cm, 5cm) auto;
 	grid-template-columns: 100%;
 	overflow-y: scroll;
 }
@@ -77,6 +122,7 @@ svg {
 	grid-template-columns: 100%;
 	align-content: space-between;
 	height: 100%;
+	font-weight: 900;
 }
 
 .header-row-1 {
@@ -84,10 +130,9 @@ svg {
 	width: 100%;
 	justify-content: space-between;
 	align-items: center;
-	grid-template-columns: minmax(5cm, 10cm) minmax(4cm, 6cm);
+	grid-template-columns: minmax(5cm, 14cm) minmax(4cm, 10cm);
 	grid-template-rows: 100%;
 }
-
 .search-parent {
 	display: grid;
 	grid-template-rows: 100%;
@@ -95,7 +140,6 @@ svg {
 	align-items: center;
 	gap: 0.2cm;
 }
-
 .search-button {
 	display: grid;
 	justify-items: center;
@@ -103,7 +147,6 @@ svg {
 	width: 100%;
 	height: 100%;
 }
-
 .search-button button {
 	width: 1cm;
 	height: 1cm;
@@ -112,79 +155,102 @@ svg {
 	border: none;
 	padding-top: 0.2cm;
 }
-
 .search-input {
 }
-
 .search-input input {
+	height: 0.5cm;
 	width: 100%;	
 	border-radius: 0.5cm;
 	padding: 0.1cm;
 	background-color: #e2e8f0;
 	border: none;
 }
-
 .info {
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: auto;
+	align-items: center;
 }
-
-.alert {
-}
-
 .user-info-1 {
 	display: grid;
-	grid-template-columns: auto auto;
+	grid-template-columns: repeat(3, minmax(1.2cm, auto));
+	align-items: center;
+	justify-content: end;
+	justify-items: center;
+	margin-right: 5%;
+	gap: 10%;
 }
-
+.alert {
+	justify-self: end;
+}
+.alert svg {
+	width: 0.5cm;
+	height: 0.5cm;
+}
 .user-image {
 }
-
+.user-image img {
+	width: var(--image-size-2);
+}
 .user-name {
 }
 
 
 .header-row-2 {
 	display: grid;
+	width: 100%;
 	grid-template-columns: auto auto;
-	justify-items: space-between;
+	justify-content: space-between;
 	align-items: center;
+	gap: 1cm;
 }
-
 .user-info-2 {
 	display: grid;
 	grid-template:
 	"user-image user-quote"
 	"user-image user-name"
 	;
+	width: auto;
+	min-width: 7cm;
+	justify-items: start;
+	justify-content: start;
+	align-items: center;
+	align-content: center;
+	gap: 0.1cm;
 }
-
 .user-image-2 {
 	grid-area: user-image;
+	margin-right: 0.3cm;
+}
+.user-image-2 img {
+	width: var(--image-size-1);
 }
 .user-quote-2 {
 	grid-area: user-quote;
+	font-size: 0.3cm;
+	align-self: end;
 }
 .user-name-2 {
-	grid-area: user-name
+	grid-area: user-name;
+	font-size: 0.40cm;
+	align-self: start;
 }
-
 
 .header-options {
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: repeat(3, minmax(2cm, 3cm));
 	justify-content: end;
 	grid-gap: 0.5cm;
+	color: white;
 }
-
 .header-options > div {
 	background-color: var(--sidebar-color);
-	border-radius: 0.2cm;
-	width: 3cm;
+	border-radius: 9999px;
 	display: grid;
 	justify-content: center;
 	align-items: center;
+	padding: 7% 0;
 }
+
 
 
 .main-content-parent {
@@ -232,6 +298,8 @@ svg {
 	/* if border-left bigger than border-radius, it looks straight, otherwise looks like the left side top-bottom going to right over the corner. I guess I've used something like this before. anyyway... */
 	border-radius: 0.4cm;
 	border-left: 0.5cm solid #f0b429;
+	margin: 0.1cm;
+	box-shadow: 0 0 0.1cm var(--shadow-color);
 }
 
 .project-box-child {
@@ -259,6 +327,7 @@ svg {
 
 
 .right {
+	color: black;
 	display: grid;
 	grid-template-areas:
 	"announcements"
@@ -266,9 +335,11 @@ svg {
 	;
 	gap: 1cm;
 }
-
-.announcements, .trending {	
-	color: black;
+.announcements {
+	grid-area: announcements;
+}
+.trending {
+	grid-area: trending;
 }
 
 .announcements-row-1 , .trending-row-1 {
@@ -276,35 +347,49 @@ svg {
 }
 .announcements-row-2 , .trending-row-2 {
 	height: calc(100% - 1cm);
-}
-.announcements-row-2 > div, .trending-row-2 > div {
-	background-color: #f6f7f8;
-	padding: 0.1cm;
-	font-size: 0.32cm;
+	overflow-x: auto;
+	box-shadow: 0.05cm 0.05cm 0.05cm var(--shadow-color);
+	margin-right: 0.05cm;
 	border-radius: 0.4cm;
 }
-.announcements-row-2 > div > div, .trending-row-2 > div > div {
+
+.right-sub-parent {
 	background-color: #f6f7f8;
-	padding: 0.3cm;
 	font-size: 0.32cm;
+	
+	padding: 0.4cm;
+	border-radius: 0.3cm;
 }
 
-.announcements-row-2 > div div > p:nth-child(1), .trending-row-2 > div div > p:nth-child(1) {
+.trending .right-sub {
+	overflow-x: hidden;
+	
+	display: grid;
+	grid-template-columns: 1fr 4fr;
+}
+
+.announcement .right-sub {
+	display: grid;
+}
+
+.announcement .right-sub {
+	
+}
+
+.right-sub {
+	display: grid;
+
+}
+.right-sub > div > img, .right-sub > div > img {
+	width: var(--image-size-2);
+}
+.right-sub > div > p:nth-child(1), .right-sub > div > p:nth-child(1) {
 	font-weight: bold;
 }
-.announcements-row-2 > div div > p:nth-child(2), .trending-row-2 > div div > p:nth-child(2) {
+.right-sub > div > p:nth-child(2), .right-sub > div > p:nth-child(2) {
 	color: var(--inside-box-text-color);
 }
-.announcements-row-2 > div > div > div > *, .trending-row-2 > div > div > div > * {
-	margin: 0.1cm;
-}
-.announcements {
-	grid-area: announcements;
-}
 
-.trending {
-	grid-area: trending;
-}
 
 
 
