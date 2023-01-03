@@ -1,10 +1,10 @@
 :root {
-	--sidebar-width: min(19%, 11cm);
+	--sidebar-width: min(17%, 8cm);
 	--sidebar-padding: 7%;
 	--sidebar-color: #1992d4;
 	--inside-box-text-color: #636363;
 	--image-size-1: 2cm;
-	--image-size-2: 1.1cm;
+	--image-size-2: 1.4cm;
 	--shadow-color: grey;
 }
 
@@ -48,10 +48,11 @@ html, body {
 
 .parent-grid {
 	display: grid;
-	grid-template-columns: var(--sidebar-width) calc(100% - var(--sidebar-width));
+	grid-template-columns: var(--sidebar-width) calc(100% - var(--sidebar-width));	
 	grid-row: 100%;
 	overflow: hidden;
 }
+
 
 .sidebar-parent {
 	background-color: var(--sidebar-color); 
@@ -96,17 +97,18 @@ html, body {
 }
 .option {
 	display: grid;
-	grid-template-columns: minmax(0.4cm, 1fr) 5fr;
+	grid-template-columns: minmax(0.4cm, 1fr) 6fr;
 	align-items:  center;
 	gap: 0.5cm;
+	font-size: 120%;
 }
-.option div {
+
+.option:hover {
+	font-size: 130%;
+	cursor: pointer;
 }
 
 .right-parent {
-	display: grid;
-	grid-template-rows: minmax(4cm, 5cm) auto;
-	grid-template-columns: 100%;
 	overflow-y: scroll;
 }
 
@@ -123,6 +125,8 @@ html, body {
 	align-content: space-between;
 	height: 100%;
 	font-weight: 900;
+	padding: 0.2cm 0;
+	gap: 0.3cm;
 }
 
 .header-row-1 {
@@ -183,8 +187,8 @@ html, body {
 	justify-self: end;
 }
 .alert svg {
-	width: 0.5cm;
-	height: 0.5cm;
+	width: 0.7cm;
+	height: 0.7cm;
 }
 .user-image {
 }
@@ -192,8 +196,8 @@ html, body {
 	width: var(--image-size-2);
 }
 .user-name {
+	font-size: 0.4cm; 
 }
-
 
 .header-row-2 {
 	display: grid;
@@ -216,6 +220,7 @@ html, body {
 	align-items: center;
 	align-content: center;
 	gap: 0.1cm;
+	column-gap: 0.3cm;
 }
 .user-image-2 {
 	grid-area: user-image;
@@ -226,37 +231,57 @@ html, body {
 }
 .user-quote-2 {
 	grid-area: user-quote;
-	font-size: 0.3cm;
+	font-size: 0.35cm;
 	align-self: end;
 }
 .user-name-2 {
 	grid-area: user-name;
-	font-size: 0.40cm;
+	font-size: 0.59cm;
 	align-self: start;
 }
 
 .header-options {
 	display: grid;
-	grid-template-columns: repeat(3, minmax(2cm, 3cm));
+	grid-template-columns: repeat(3, minmax(2.5cm, 4cm));
 	justify-content: end;
 	grid-gap: 0.5cm;
 	color: white;
 }
 .header-options > div {
 	background-color: var(--sidebar-color);
+	/*font-size: 3.5vh;*/
+	font-size: 0.5cm;
 	border-radius: 9999px;
 	display: grid;
 	justify-content: center;
 	align-items: center;
 	padding: 7% 0;
 }
+/* else, change font-size by width, not height...*/
+/* @media (max-aspect-ratio: 1.5 / 1) {
+	.header-options > div {
+		background-color: var(--sidebar-color);
+		font-size: 2vw;
+		border-radius: 9999px;
+		display: grid;
+		justify-content: center;
+		align-items: center;
+		padding: 7% 0;
+	}
+}
+*/
+.header-options > div:hover {
+	font-size: 0.6cm;
+	padding: 5% 0;
+	cursor: pointer;
+}
 
 
 
 .main-content-parent {
 	background-color: #e2e8f0;
-	padding: 0.2cm 0.5cm;
-
+	padding: 0.6cm 0.5cm;
+	padding-bottom: 1cm;
 }
 
 .main-content {
@@ -276,11 +301,14 @@ html, body {
 
 
 .projects-parent {
-
+	display: grid;
+	grid-template-rows: auto auto;
+	gap: 0.2cm;
 }
 .projects-row-1 {
 	color: black;
 	font-weight: 900;
+	margin-left: 0.4cm;
 }
 
 .projects {
@@ -307,25 +335,34 @@ html, body {
 	margin: 0.5cm 1cm;
 }
 
-.project-box-child > p:nth-child(1) {
+.project-box-child > h3 {
 	color: black;
 	font-weight: 900;
 }
 
 .project-options {	
-	width: 2cm;
+	width: auto;
 	display: grid;
 	grid-template-columns: auto auto auto; 
-	grid-template-rows: 1cm;
+	gap: 0.8cm;
 	justify-self: end;
 }
 
 .project-options > div {
-	width: 1cm;
+	width: 0.7cm;
+}
+.project-options > div:hover {
+	cursor: pointer
+}
+.project-options > div:active {
+	fill: #1992d4;
 }
 
-
-
+.right-non-main-parent {
+	display: grid;
+	grid-template-rows: minmax(4cm, 5cm) auto;
+	grid-template-columns: 100%;
+}
 .right {
 	color: black;
 	display: grid;
@@ -333,7 +370,13 @@ html, body {
 	"announcements"
 	"trending"
 	;
-	gap: 1cm;
+	gap: 0.6cm;
+}
+.announcements, .trending {
+	display: grid;
+	grid-template-rows: auto auto;
+	gap: 0.2cm;
+	max-height: 11cm;
 }
 .announcements {
 	grid-area: announcements;
@@ -343,51 +386,71 @@ html, body {
 }
 
 .announcements-row-1 , .trending-row-1 {
-	height: 1cm;
+	margin-left: 0.1cm;
 }
 .announcements-row-2 , .trending-row-2 {
-	height: calc(100% - 1cm);
-	overflow-x: auto;
-	box-shadow: 0.05cm 0.05cm 0.05cm var(--shadow-color);
-	margin-right: 0.05cm;
-	border-radius: 0.4cm;
+	 overflow-y: scroll;
 }
 
 .right-sub-parent {
 	background-color: #f6f7f8;
 	font-size: 0.32cm;
-	
 	padding: 0.4cm;
-	border-radius: 0.3cm;
-}
 
+	display: grid;
+	position: relative;
+	gap: 0.3cm;
+
+	border-radius: 0.5cm;
+	margin: 0.1cm;
+	box-shadow: 0.1cm 0.1cm 0.05cm rgb(131, 136, 143, 0.3);
+
+}
+.trending .right-sub-parent {
+	gap: 0.4cm;
+}
+.right-sub-parent hr {
+	width: 100%;
+	border: 0.05cm solid #e2e8f0;
+	border-radius: 999px;
+}
+/*
+.announcements .right-sub-parent .right-sub:after {
+	/* **** ok ok, hr works xD
+	border-top: 0.1cm solid black;
+   	content: '';
+  	top: 0;
+  	left: 0;
+  	width: calc(100vw - 60px);
+ 	position: absolute; /* absolute to first parent that has position: relative
+}
+*/
+.announcement .right-sub {
+	display: grid;
+}
 .trending .right-sub {
-	overflow-x: hidden;
-	
 	display: grid;
 	grid-template-columns: 1fr 4fr;
+	gap: 0.3cm
 }
-
-.announcement .right-sub {
+.right-sub > div {
 	display: grid;
-}
-
-.announcement .right-sub {
-	
-}
-
-.right-sub {
-	display: grid;
-
+	grid-template-rows: auto auto;
+	gap: 0.1cm;	
 }
 .right-sub > div > img, .right-sub > div > img {
 	width: var(--image-size-2);
 }
+.right-sub p {
+	margin: 0;
+}
 .right-sub > div > p:nth-child(1), .right-sub > div > p:nth-child(1) {
 	font-weight: bold;
+	align-self: end;
 }
 .right-sub > div > p:nth-child(2), .right-sub > div > p:nth-child(2) {
 	color: var(--inside-box-text-color);
+	align-self: start;
 }
 
 
